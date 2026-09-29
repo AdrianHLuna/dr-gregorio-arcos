@@ -30,6 +30,7 @@ export async function generateMetadata(props: PageProps<"/enfermedades/[slug]">)
       title: disease.seo.title,
       description: disease.seo.description,
       url: `/enfermedades/${disease.slug}`,
+      images: disease.image ? [{ url: disease.image }] : undefined,
       type: "article",
       locale: "es_MX",
     },

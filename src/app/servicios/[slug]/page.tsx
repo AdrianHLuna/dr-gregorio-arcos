@@ -30,6 +30,7 @@ export async function generateMetadata(props: PageProps<"/servicios/[slug]">): P
       title: service.seo.title,
       description: service.seo.description,
       url: `/servicios/${service.slug}`,
+      images: service.image ? [{ url: service.image }] : undefined,
       type: "article",
       locale: "es_MX",
     },
