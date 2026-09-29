@@ -1,35 +1,45 @@
 interface MapFacadeProps {
   address: string;
+  city?: string;
+  state?: string;
+  geo?: { latitude: number; longitude: number };
+  googleMapsUrl?: string;
 }
 
 /**
  * Mapa real e interactivo desde la primera carga (AGENTS.md §7 — nunca clic
- * para "ver el mapa"). Ya NO lleva ninguna tarjeta flotante encima: una
- * tarjeta superpuesta (centrada o anclada a una esquina) terminaba tapando el
- * pin en viewports angostos, donde su alto ocupa una porción grande del mapa
- * (reporte directo del usuario, persistió 2026-09-24 pese al primer intento
- * de solo reposicionarla). La dirección, horario y botones de acción viven
- * ahora en la franja debajo del mapa (`/contacto/page.tsx`), nunca encima.
+ * para "ver el mapa"). Franja informativa con dirección, horario y acciones
+ * vive debajo en `/contacto/page.tsx`.
  *
- * Sin `loading="lazy"`: confirmado con DevTools (2026-09-24) que el iframe se
- * quedaba en blanco de forma permanente — cero peticiones de red a Google —
- * porque el chequeo de intersección del navegador ocurre antes de que el
- * layout de `h-[60vh]` termine de asentarse en la hidratación, y sin un
- * scroll posterior que lo re-dispare, nunca vuelve a intentarlo. Esto
- * contradice además la regla de "mapa real desde la primera carga" — un mapa
- * diferido a propósito no cumple eso de todas formas.
+ * Utiliza coordenadas geo o la dirección completa estructurada (incluyendo
+ * municipio y estado) más un zoom fijo z=16 para evitar que Google Maps
+ * des-haga el zoom mostrando todo el país.
  */
-export default function MapFacade({ address }: MapFacadeProps) {
-  const mapsEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`;
+export default function MapFacade({ address, city, state, geo, googleMapsUrl }: MapFacadeProps) {
+  const query = geo
+    ? `${geo.latitude},${geo.longitude}`
+    : [address.replace(/#|int\.\s*\d+/gi, "").trim(), city, state, "México"].filter(Boolean).join(", ");
+
+  const mapsEmbedUrl = `https://www.google.com/maps?q=${encodeURIComponent(query)}&z=16&output=embed`;
+  const externalMapsUrl =
+    googleMapsUrl || `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
 
   return (
-    <div className="h-[60vh] w-full bg-navy">
+    <div className="relative h-[60vh] w-full bg-navy">
       <iframe
         src={mapsEmbedUrl}
         className="h-full w-full border-0 grayscale-[35%] contrast-[1.05]"
         referrerPolicy="no-referrer-when-downgrade"
         title="Ubicación del consultorio"
       />
+      <a
+        href={externalMapsUrl}
+        target="_blank"
+        rel="noreferrer"
+        className="hard-cut absolute left-4 top-4 z-10 inline-flex items-center gap-1.5 border border-white/30 bg-ink/90 px-3 py-2 text-xs font-semibold text-foreground backdrop-blur-md transition-colors hover:border-vein hover:text-vein-pale"
+      >
+        Abrir en Google Maps ↗
+      </a>
     </div>
   );
 }

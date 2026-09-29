@@ -29,7 +29,8 @@ export const doctor: DoctorProfile = {
   // PENDIENTE: reemplazar por el enlace real de Google Business Profile
   // ("DR. GREGORIO ALBERTO GONZALEZ ARCOS" según el intake) cuando se confirme.
   googleMapsUrl:
-    "https://www.google.com/maps/search/?api=1&query=Torre+Medica+Santa+Vasco+Nunez+de+Balboa+1003+Fracc.+Hornos+Acapulco+Guerrero",
+    "https://www.google.com/maps/search/?api=1&query=Torre+Medica+Santa+Lucia+Vasco+Nunez+de+Balboa+1003+Hornos+Acapulco+Guerrero",
+  geo: { latitude: 16.85829, longitude: -99.89346 },
   // PENDIENTE CRÍTICO: el doctor no dio precio (campo vacío en el intake).
   // Este "1" es un valor técnico para satisfacer el esquema (positive()) —
   // NUNCA renderizarlo en UI ni incluirlo en JSON-LD (ver instrucciones en

@@ -27,7 +27,13 @@ export default function ContactoPage() {
     <main className="bg-ink">
       <Breadcrumbs items={[{ label: "Inicio", href: "/" }, { label: "Contacto" }]} isDark />
 
-      <MapFacade address={doctor.address} />
+      <MapFacade
+        address={doctor.address}
+        city={doctor.city}
+        state={doctor.state}
+        geo={doctor.geo}
+        googleMapsUrl={doctor.googleMapsUrl}
+      />
 
       <div className="border-y border-border bg-ink-raised">
         <div className="mx-auto grid max-w-6xl gap-10 px-6 py-12 md:grid-cols-[1.3fr_1fr] md:items-center">
