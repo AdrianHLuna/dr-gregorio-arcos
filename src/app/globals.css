@@ -1,0 +1,162 @@
+@import "tailwindcss";
+@plugin "tailwindcss-animate";
+
+/*
+ * "Circulación" — dirección de diseño real del Dr. Gregorio Alberto González
+ * Arcos (Angiólogo, Acapulco de Guerrero). Paleta oficial de marca extraída
+ * de PALETA DE COLORES DR. GREGORIO_compressed.pdf: negro, rojo arterial y
+ * azul venoso como acentos vivos, sobre un tema oscuro dominante — el
+ * negro/navy es el fondo, nunca un extra. Territorio de color nuevo dentro
+ * del registro de diseños (ningún otro sitio usa rojo como color de marca).
+ */
+:root {
+  --ink: #17181a; /* negro de marca (#222220) ligeramente ajustado para profundidad de fondo */
+  --ink-raised: #222220; /* negro de marca exacto, superficies elevadas */
+  --navy: #1c253f; /* navy secundario de marca, fondo de sección alterna */
+  --steel: #384a7e; /* azul acero de marca, bordes/iconos secundarios */
+
+  --artery: #af3635; /* rojo arterial — acento vivo principal (CTA, alarma) */
+  --artery-deep: #581b1b; /* granate de marca — hover/pressed del rojo */
+  --artery-soft: #bf5e5d; /* salmón de marca — texto/realces sobre fondo oscuro */
+
+  --vein: #4b63a8; /* azul venoso — acento vivo secundario (informativo) */
+  --vein-soft: #afb7cb; /* gris azulado de marca — texto secundario */
+  --vein-pale: #bdc9ea; /* gris azulado claro de marca — bordes sutiles */
+
+  --violet: #46437a; /* morado apagado de marca — tercer acento, uso mínimo */
+  --lavender: #d1cefb; /* lavanda de marca — halos/glow, uso mínimo */
+
+  --background: var(--ink);
+  --background-alt: var(--navy);
+  --surface: #1f212b;
+  --surface-raised: #262838;
+  --foreground: #f4f2ec;
+  --muted: #262838;
+  --muted-foreground: var(--vein-soft);
+  --border: #33364a;
+  --border-soft: #2a2c3a;
+
+  --primary: var(--artery);
+  --primary-foreground: #fff8f6;
+  --accent: var(--vein);
+  --accent-foreground: #f4f6fb;
+
+  --whatsapp: #25d366;
+}
+
+@theme inline {
+  --font-sans: var(--font-jost), "Century Gothic", "Segoe UI", system-ui, sans-serif;
+
+  --color-background: var(--background);
+  --color-background-alt: var(--background-alt);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-border-soft: var(--border-soft);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-artery: var(--artery);
+  --color-artery-deep: var(--artery-deep);
+  --color-artery-soft: var(--artery-soft);
+  --color-vein: var(--vein);
+  --color-vein-soft: var(--vein-soft);
+  --color-vein-pale: var(--vein-pale);
+  --color-violet: var(--violet);
+  --color-lavender: var(--lavender);
+  --color-ink-raised: var(--ink-raised);
+  --color-navy: var(--navy);
+  --color-steel: var(--steel);
+  --color-whatsapp: var(--whatsapp);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--artery);
+  color: var(--primary-foreground);
+}
+
+/* ── Personalidad de animación: gráfica y bold ──────────────────────────
+ * Cortes duros, sin easing suave. `steps()` produce un cambio "en bloques"
+ * en vez de una curva continua — lo opuesto a los fades largos de otros
+ * sitios del registro. Se usa en hovers, reveals y el hero slider.
+ */
+.hard-cut {
+  transition-property: transform, opacity, background-color, border-color, box-shadow, color;
+  transition-duration: 140ms;
+  transition-timing-function: steps(3, jump-end);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hard-cut {
+    transition: none;
+  }
+}
+
+.reveal-step {
+  opacity: 0;
+  transform: translateY(14px);
+}
+.reveal-step.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 220ms steps(4, jump-end), transform 220ms steps(4, jump-end);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal-step {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Carrusel horizontal con scroll-snap — patrón de tarjetas de este sitio. */
+.snap-row {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--vein) transparent;
+}
+.snap-row::-webkit-scrollbar {
+  height: 8px;
+}
+.snap-row::-webkit-scrollbar-thumb {
+  background: var(--vein);
+  border-radius: 999px;
+}
+.snap-item {
+  scroll-snap-align: start;
+}
+
+/* Fallback clínico de imagen: base oscura neutra (ink → navy) con UN solo
+ * resplandor de acento — nunca un recuadro plano ni un ícono genérico
+ * centrado a solas. Antes mezclaba rojo Y azul en el mismo degradado
+ * diagonal: donde se cruzaban producían un tono ciruela/marrón apagado que
+ * no se sentía intencional (retroalimentación real del usuario 2026-09-24:
+ * "no es el color en sí sino cómo lo usaste"). Ahora cada superficie usa un
+ * único acento vivo a la vez, nunca los dos mezclados directamente. */
+.vascular-fallback {
+  background:
+    radial-gradient(120% 100% at 25% 15%, color-mix(in oklab, var(--artery) 24%, transparent) 0%, transparent 60%),
+    linear-gradient(165deg, var(--ink-raised) 0%, var(--navy) 100%);
+}
+
+.vascular-fallback-vein {
+  background:
+    radial-gradient(120% 100% at 75% 15%, color-mix(in oklab, var(--vein) 26%, transparent) 0%, transparent 60%),
+    linear-gradient(165deg, var(--ink-raised) 0%, var(--navy) 100%);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
