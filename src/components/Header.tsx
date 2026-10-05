@@ -10,6 +10,7 @@ const navItems: { label: string; href: Route }[] = [
   { label: "Enfermedades", href: "/enfermedades" },
   { label: "Servicios", href: "/servicios" },
   { label: "Síntomas", href: "/sintomas" },
+  { label: "Galería", href: "/galeria" as Route },
   { label: "Contacto", href: "/contacto" },
 ];
 

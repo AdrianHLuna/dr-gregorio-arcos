@@ -18,3 +18,5 @@ export const doctor = DoctorProfileSchema.parse(rawDoctor);
 export const diseases = z.array(MedicalConditionSchema).min(1).parse(rawDiseases);
 export const services = z.array(MedicalServiceSchema).min(1).parse(rawServices);
 export const symptoms = z.array(SymptomSchema).min(1).parse(rawSymptoms);
+export { galleryImages, galleryVideos } from "./gallery";
+

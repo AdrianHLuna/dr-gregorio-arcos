@@ -14,11 +14,13 @@ interface EntityImageProps {
   size?: "card" | "hero";
   className?: string;
   priority?: boolean;
+  objectFit?: "cover" | "contain";
+  objectPosition?: string;
 }
 
 const sizeClass: Record<NonNullable<EntityImageProps["size"]>, string> = {
   card: "aspect-[4/3] min-h-[220px]",
-  hero: "aspect-[16/9] min-h-[280px] md:min-h-[380px]",
+  hero: "aspect-[4/3] sm:aspect-[16/10] md:aspect-[3/2] max-h-[380px] md:max-h-[440px] w-full",
 };
 
 /**
@@ -27,7 +29,15 @@ const sizeClass: Record<NonNullable<EntityImageProps["size"]>, string> = {
  * venoso (colores reales del logo) con una línea de acento inferior — nunca
  * un ícono genérico centrado a solas ni un recuadro plano.
  */
-export default function EntityImage({ src, alt, size = "card", className = "", priority = false }: EntityImageProps) {
+export default function EntityImage({
+  src,
+  alt,
+  size = "card",
+  className = "",
+  priority = false,
+  objectFit = "cover",
+  objectPosition = "object-center",
+}: EntityImageProps) {
   const [failed, setFailed] = useState(!src);
 
   if (failed) {
@@ -50,7 +60,7 @@ export default function EntityImage({ src, alt, size = "card", className = "", p
         alt={alt}
         fill
         priority={priority}
-        className="object-cover"
+        className={`${objectFit === "contain" ? "object-contain" : "object-cover"} ${objectPosition}`}
         sizes={size === "hero" ? "(max-width: 768px) 100vw, 900px" : "(max-width: 768px) 80vw, 320px"}
         onError={() => setFailed(true)}
       />

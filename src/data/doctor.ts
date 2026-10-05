@@ -42,8 +42,8 @@ export const doctor: DoctorProfile = {
   schedule: "Lunes a miércoles de 12:00 a 18:00",
   openingHours: ["Mo-We 12:00-18:00"],
   acceptingNewPatients: true,
-  // PENDIENTE: no se encontró carpeta de fotos reales del doctor en el repo.
-  photo: "/doctor-placeholder.jpg",
+  // Fotografía oficial del Dr. Gregorio Alberto González Arcos.
+  photo: "/images/hero.jpeg",
   bio: "El Dr. Gregorio Alberto González Arcos es Angiólogo, con especialidad en Angiología y Cirugía Vascular y Endovascular por la Universidad Nacional Autónoma de México, y una especialidad adicional en Urgencias Médico-Quirúrgicas por el Instituto Politécnico Nacional. Es Médico Cirujano egresado de la Universidad Autónoma de Guerrero. Atiende en su consultorio de la Torre Médica Santa, en Acapulco de Juárez, Guerrero, enfocado en el diagnóstico y tratamiento de enfermedades de las venas y las arterias, desde afecciones venosas frecuentes hasta procedimientos vasculares que requieren atención más especializada.",
   philosophy:
     "Mi compromiso es ofrecer a cada paciente una valoración vascular clara y honesta, explicando el origen de sus síntomas circulatorios en un lenguaje comprensible y acompañándolo en cada etapa del tratamiento, desde el diagnóstico hasta la recuperación.",
