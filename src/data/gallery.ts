@@ -20,7 +20,7 @@ export interface GalleryVideo {
 export const galleryImages: GalleryImage[] = [
   {
     id: "dr-escritorio",
-    src: "/images/IMG_5955.jpeg",
+    src: "/images/IMG_5955.jpg",
     alt: "Dr. Gregorio Alberto González Arcos en su escritorio de consulta",
     title: "Dr. Gregorio Alberto González Arcos",
     category: "doctor",
@@ -56,7 +56,7 @@ export const galleryImages: GalleryImage[] = [
   },
   {
     id: "dr-valoracion-1",
-    src: "/images/IMG_5917.jpeg",
+    src: "/images/IMG_5917.jpg",
     alt: "Dr. Gregorio realizando valoración clínica vascular a paciente",
     title: "Valoración Clínica Vascular",
     category: "doctor",
@@ -65,7 +65,7 @@ export const galleryImages: GalleryImage[] = [
   },
   {
     id: "dr-consulta-2",
-    src: "/images/IMG_5932.jpeg",
+    src: "/images/IMG_5932.jpg",
     alt: "Dr. Gregorio en consulta médica con paciente",
     title: "Atención Médica Especializada",
     category: "doctor",
@@ -74,7 +74,7 @@ export const galleryImages: GalleryImage[] = [
   },
   {
     id: "dr-explicacion",
-    src: "/images/IMG_5958.jpeg",
+    src: "/images/IMG_5958.jpg",
     alt: "Dr. Gregorio explicando diagnóstico vascular al paciente",
     title: "Orientación Médica Integral",
     category: "doctor",
@@ -83,7 +83,7 @@ export const galleryImages: GalleryImage[] = [
   },
   {
     id: "dr-paciente",
-    src: "/images/IMG_5964.jpeg",
+    src: "/images/IMG_5964.jpg",
     alt: "Dr. Gregorio atendiendo a paciente en consultorio",
     title: "Consulta Especializada",
     category: "doctor",

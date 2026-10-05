@@ -90,8 +90,9 @@ export default function PhotoGallery() {
           <div
             key={img.id}
             onClick={() => setSelectedImageIndex(idx)}
-            className="group relative cursor-pointer overflow-hidden border border-border bg-ink-raised transition-all duration-300 hover:border-artery hover:shadow-xl hover:shadow-artery/10"
+            className="group relative flex flex-col cursor-pointer overflow-hidden border border-border bg-ink-raised transition-all duration-300 hover:border-artery hover:shadow-xl hover:shadow-artery/10"
           >
+            {/* Arriba: Imagen nítida sin filtros CSS de desenfoque */}
             <div className="relative aspect-[4/3] w-full overflow-hidden bg-ink">
               <Image
                 src={img.src}
@@ -100,22 +101,21 @@ export default function PhotoGallery() {
                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent opacity-70 group-hover:opacity-85 transition-opacity" />
-
-              <span className="absolute top-3 left-3 hard-cut border border-white/20 bg-ink/75 px-2.5 py-1 text-[11px] font-semibold text-vein-pale backdrop-blur-md">
+              <span className="absolute top-3 left-3 hard-cut border border-white/20 bg-ink/90 px-3 py-1 text-xs font-semibold text-vein-pale backdrop-blur-md shadow-md">
                 {img.categoryLabel}
               </span>
 
-              <div className="absolute top-3 right-3 hard-cut flex h-8 w-8 items-center justify-center border border-white/30 bg-ink/60 text-white opacity-0 backdrop-blur-sm transition-opacity group-hover:opacity-100">
+              <div className="absolute top-3 right-3 hard-cut flex h-8 w-8 items-center justify-center border border-white/30 bg-ink/80 text-white opacity-0 backdrop-blur-sm transition-opacity group-hover:opacity-100">
                 <Maximize2 className="h-4 w-4" />
               </div>
+            </div>
 
-              <div className="absolute bottom-0 inset-x-0 p-4 transform translate-y-1 group-hover:translate-y-0 transition-transform">
-                <h3 className="text-base font-semibold text-white group-hover:text-artery-soft transition-colors">
-                  {img.title}
-                </h3>
-                <p className="mt-1 text-xs text-vein-soft line-clamp-2">{img.description}</p>
-              </div>
+            {/* Abajo: Pie de tarjeta independiente en fondo oscuro con 100% legibilidad */}
+            <div className="flex flex-1 flex-col justify-between border-t border-border bg-ink-raised p-4">
+              <h3 className="text-sm font-semibold text-foreground group-hover:text-artery-soft transition-colors">
+                {img.title}
+              </h3>
+              <p className="mt-1 text-xs leading-relaxed text-muted-foreground line-clamp-2">{img.description}</p>
             </div>
           </div>
         ))}
@@ -190,9 +190,12 @@ export default function PhotoGallery() {
               )}
             </div>
 
-            {/* Pie con descripción y paginador */}
+            {/* Pie con título, descripción y paginador */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-t border-border bg-ink px-6 py-4">
-              <p className="text-sm text-vein-pale max-w-2xl">{activeImage.description}</p>
+              <div>
+                <h4 className="text-sm font-semibold text-foreground">{activeImage.title}</h4>
+                <p className="mt-0.5 text-xs text-muted-foreground max-w-2xl">{activeImage.description}</p>
+              </div>
               <span className="text-xs text-muted-foreground whitespace-nowrap">
                 Imagen {(selectedImageIndex ?? 0) + 1} de {filteredImages.length}
               </span>

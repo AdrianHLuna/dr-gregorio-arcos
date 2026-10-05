@@ -140,7 +140,7 @@ export default function Home() {
               <Link
                 key={img.id}
                 href="/galeria"
-                className="group relative overflow-hidden border border-border bg-ink-raised transition-all hover:border-artery hover:shadow-xl hover:shadow-artery/10"
+                className="group relative flex flex-col overflow-hidden border border-border bg-ink-raised transition-all hover:border-artery hover:shadow-xl hover:shadow-artery/10"
               >
                 <div className="relative aspect-[4/3] w-full bg-ink">
                   <Image
@@ -150,15 +150,14 @@ export default function Home() {
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 640px) 100vw, 33vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent opacity-80" />
-                  <div className="absolute bottom-0 inset-x-0 p-4">
-                    <span className="text-[10px] font-semibold uppercase tracking-wider text-artery-soft">
-                      {img.categoryLabel}
-                    </span>
-                    <p className="text-sm font-semibold text-white group-hover:text-artery-soft transition-colors">
-                      {img.title}
-                    </p>
-                  </div>
+                  <span className="absolute top-3 left-3 hard-cut border border-white/20 bg-ink/90 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-artery-soft backdrop-blur-md shadow-sm">
+                    {img.categoryLabel}
+                  </span>
+                </div>
+                <div className="flex flex-1 flex-col justify-between border-t border-border bg-ink-raised p-4">
+                  <p className="text-sm font-semibold text-white group-hover:text-artery-soft transition-colors">
+                    {img.title}
+                  </p>
                 </div>
               </Link>
             ))}
