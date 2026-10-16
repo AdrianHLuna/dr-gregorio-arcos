@@ -5,8 +5,8 @@ import type { NextConfig } from "next";
 // React nunca usa eval() en producción, así que la build de producción no lo necesita.
 const scriptSrc =
   process.env.NODE_ENV === "production"
-    ? "'self' 'unsafe-inline' https://www.googletagmanager.com"
-    : "'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com";
+    ? "'self' 'unsafe-inline' https://www.googletagmanager.com https://*.googletagmanager.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://www.google.com https://tagassistant.google.com"
+    : "'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://*.googletagmanager.com https://www.googleadservices.com https://googleads.g.doubleclick.net https://www.google.com https://tagassistant.google.com";
 
 const securityHeaders = [
   {
@@ -19,7 +19,7 @@ const securityHeaders = [
   },
   {
     key: "X-Frame-Options",
-    value: "DENY",
+    value: "SAMEORIGIN",
   },
   {
     key: "Referrer-Policy",
@@ -32,7 +32,7 @@ const securityHeaders = [
   {
     key: "Content-Security-Policy",
     value:
-      `default-src 'self'; script-src ${scriptSrc}; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.google-analytics.com https://www.googletagmanager.com; frame-src https://www.youtube-nocookie.com https://www.google.com; object-src 'none'; base-uri 'self'; frame-ancestors 'none'`,
+      `default-src 'self'; script-src ${scriptSrc}; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://www.googletagmanager.com https://www.google.com https://*.google.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://stats.g.doubleclick.net https://tagassistant.google.com; frame-src https://www.googletagmanager.com https://www.google.com https://www.youtube-nocookie.com https://bid.g.doubleclick.net https://td.doubleclick.net https://tagassistant.google.com; object-src 'none'; base-uri 'self'; frame-ancestors 'self' https://tagassistant.google.com`,
   },
 ];
 
