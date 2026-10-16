@@ -287,7 +287,7 @@ export const consultorioZones: ConsultorioZone[] = [
       {
         icon: "PhoneCall",
         title: "Contacto Directo",
-        text: "Línea telefónica y WhatsApp oficial al 744 118 6041 para agendar y orientarle.",
+        text: "Línea telefónica y WhatsApp oficial al 744 177 9103 para agendar y orientarle.",
       },
     ],
     gallery: [
@@ -307,7 +307,7 @@ export const consultorioZones: ConsultorioZone[] = [
         src: "/images/consultorio/img_5847.webp",
         alt: "Puerta oficial del Consultorio 403",
         title: "Puerta Oficial Consultorio 403",
-        caption: "Acceso principal en el piso 4 con teléfono directo 744 118 6041",
+        caption: "Acceso principal en el piso 4 con teléfono directo 744 177 9103",
       },
       {
         src: "/images/consultorio/img_5823.webp",
@@ -444,7 +444,7 @@ export const galleryImages: GalleryImage[] = [
     title: "Acceso al Consultorio 403",
     category: "consultorio",
     categoryLabel: "Consultorio e Instalaciones",
-    description: "Piso 4 de Torre Médica Santa, con número directo para citas 744 118 6041.",
+    description: "Piso 4 de Torre Médica Santa, con número directo para citas 744 177 9103.",
   },
   // Fotos de atención médica y Dr. Gregorio
   {

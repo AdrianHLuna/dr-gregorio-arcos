@@ -18,8 +18,8 @@ export const doctor: DoctorProfile = {
   cedulaEspecialidadInstitucion: "UNAM",
   cedulaSubespecialidad: "5259295",
   cedulaSubespecialidadInstitucion: "IPN",
-  phone: "+527444864745",
-  whatsapp: "+527441186041",
+  phone: "+527441779103",
+  whatsapp: "+527441779103",
   // Correo real, sí se dio en el intake.
   email: "alber_gonzalez2000@yahoo.com.mx",
   address: "Torre Médica Santa, Vasco Núñez de Balboa #1003, int. 403, Fracc. Hornos",
@@ -67,4 +67,5 @@ export const doctor: DoctorProfile = {
     },
   ],
   sameAs: [],
+  ga4Id: "G-WGEZFRE52J",
 };
