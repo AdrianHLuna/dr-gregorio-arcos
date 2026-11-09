@@ -4,7 +4,7 @@ import { doctor, diseases, services, symptoms } from "@/data";
 export const dynamic = "force-static";
 
 export async function GET() {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "";
+  const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.drgregoriogonzalez.com").replace(/\/+$/, "");
 
   const content = `
 # ${doctor.title} ${doctor.name} - ${doctor.specialty}

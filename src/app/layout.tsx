@@ -9,7 +9,7 @@ import FloatingButtons from "@/components/FloatingButtons";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://dr-gregorio-arcos.com"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://www.drgregoriogonzalez.com"),
   title: {
     default: `${doctor.title} ${doctor.name} — ${doctor.specialistTitle} en ${doctor.city}`,
     template: `%s | ${doctor.title} ${doctor.name}`,

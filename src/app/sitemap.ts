@@ -7,7 +7,7 @@ const FALLBACK_DATE = new Date("2026-09-24");
 const dateOf = (lastReviewed?: string) => (lastReviewed ? new Date(lastReviewed) : FALLBACK_DATE);
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "";
+  const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.drgregoriogonzalez.com").replace(/\/+$/, "");
 
   const diseaseUrls = diseases.map((d) => ({
     url: `${baseUrl}/enfermedades/${d.slug}`,
@@ -38,6 +38,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...diseaseUrls,
     ...serviceUrls,
     ...symptomUrls,
+    { url: `${baseUrl}/galeria`, lastModified: FALLBACK_DATE, priority: 0.6 },
     { url: `${baseUrl}/contacto`, lastModified: FALLBACK_DATE, priority: 0.5 },
     { url: `${baseUrl}/aviso-de-privacidad`, lastModified: FALLBACK_DATE, priority: 0.3 },
   ];

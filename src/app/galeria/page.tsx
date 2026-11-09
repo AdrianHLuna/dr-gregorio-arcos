@@ -38,7 +38,7 @@ export default function GaleriaPage() {
       addressCountry: doctor.country,
     },
     telephone: doctor.phone,
-    image: `${process.env.NEXT_PUBLIC_SITE_URL || ""}${doctor.photo}`,
+    image: `${(process.env.NEXT_PUBLIC_SITE_URL || "https://www.drgregoriogonzalez.com").replace(/\/+$/, "")}${doctor.photo}`,
   };
 
   return (

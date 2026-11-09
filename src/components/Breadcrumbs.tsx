@@ -14,7 +14,7 @@ interface BreadcrumbsProps {
 }
 
 export default function Breadcrumbs({ items, isDark = false }: BreadcrumbsProps) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "";
+  const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.drgregoriogonzalez.com").replace(/\/+$/, "");
 
   const schema = {
     "@context": "https://schema.org",
