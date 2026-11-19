@@ -26,10 +26,8 @@ export const doctor: DoctorProfile = {
   city: "Acapulco de Juárez",
   state: "Guerrero",
   country: "México",
-  // PENDIENTE: reemplazar por el enlace real de Google Business Profile
-  // ("DR. GREGORIO ALBERTO GONZALEZ ARCOS" según el intake) cuando se confirme.
-  googleMapsUrl:
-    "https://www.google.com/maps/search/?api=1&query=Torre+Medica+Santa+Lucia+Vasco+Nunez+de+Balboa+1003+Hornos+Acapulco+Guerrero",
+  // Ficha de Google Business Profile oficial del doctor.
+  googleMapsUrl: "https://g.page/r/CW5vTgyHLofuEBM/",
   geo: { latitude: 16.85829, longitude: -99.89346 },
   // PENDIENTE CRÍTICO: el doctor no dio precio (campo vacío en el intake).
   // Este "1" es un valor técnico para satisfacer el esquema (positive()) —

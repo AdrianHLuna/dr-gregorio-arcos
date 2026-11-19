@@ -46,6 +46,14 @@ export default function ContactoPage() {
                 <p className="text-sm text-muted-foreground">
                   {doctor.city}, {doctor.state}
                 </p>
+                <a
+                  href={doctor.googleMapsUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="mt-2 inline-flex items-center gap-1 text-xs font-medium text-artery-soft hover:underline"
+                >
+                  Ver ficha en Google Maps ↗
+                </a>
               </div>
             </div>
             <div className="flex gap-3">
